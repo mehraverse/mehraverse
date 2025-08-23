@@ -59,8 +59,8 @@ export default function ContactSection() {
 
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/assets/Mehra Resume 2025.pdf';
-    link.download = 'Mehra Resume 2025.pdf';
+    link.href = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/e3dd84b79_MehraResume2025.pdf';
+    link.download = 'Abhishek_Mehra_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -129,7 +129,7 @@ export default function ContactSection() {
                       <p className="text-gray-400 text-xs mb-3">
                         {method.description}
                       </p>
-                      <div className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300 break-all">
+                      <div className="text-gray-300 text-xs group-hover:text-white transition-colors duration-300 break-all">
                         {method.action}
                       </div>
                     </CardContent>

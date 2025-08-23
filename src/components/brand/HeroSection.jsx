@@ -66,9 +66,9 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Results-driven Software Engineer with a passion for automation and data. 
+            Results-driven Software Engineer with a passion for automation and data.
             <br className="hidden sm:block" />
-            Building robust solutions in global finance, while capturing stories through filmmaking.
+            {' '}Building robust solutions in global finance, while capturing stories through filmmaking.
           </motion.p>
 
           <motion.div
@@ -111,7 +111,7 @@ export default function HeroSection() {
           <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto rounded-full bg-gradient-to-br from-blue-400 to-purple-500 p-1 shadow-2xl">
             <div className="w-full h-full rounded-full bg-white p-1">
               <img
-                src="/assets/profile.jpg"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/aac017e20_me-2-cropped.jpg"
                 alt="Abhishek Mehra"
                 className="w-full h-full rounded-full object-cover"
               />
