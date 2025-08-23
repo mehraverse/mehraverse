@@ -38,28 +38,28 @@ export default function LeadershipSection() {
 
   const photos = [
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/a4c0faafa_FullSizeRender.jpg", 
-        caption: "Nubra Valley, India", 
+      src: "assets/Nubra.jpg", 
+      caption: "Nubra Valley, India", 
     },
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/4b56603f1_IMG_4270.jpg", 
-        caption: "Zao Onsen, Japan", 
+      src: "assets/Zao.jpg", 
+      caption: "Zao Onsen, Japan", 
     },
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/9b9590110_SnapInstato_398296812_317563984230432_4284574084196930600_n.jpg", 
-        caption: "Genoa, Italy", 
+      src: "assets/Genoa.jpg", 
+      caption: "Genoa, Italy", 
     },
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/059f1d13e_SnapInstato_398613332_1074374427140449_1932666462626157755_n.jpg", 
-        caption: "Interlaken, Switzerland", 
+      src: "assets/Interlaken.jpg", 
+      caption: "Interlaken, Switzerland", 
     },
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/bf3441e24_IMG_5967.jpg", 
-        caption: "Aso, Japan", 
+      src: "assets/Aso.jpg", 
+      caption: "Aso, Japan", 
     },
     { 
-        src: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/3f4cd4acf_IMG_1932.jpg", 
-        caption: "Ishigaki, Japan", 
+      src: "assets/Ishigaki.jpg", 
+      caption: "Ishigaki, Japan", 
     },
   ];
 

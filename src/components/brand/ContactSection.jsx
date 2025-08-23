@@ -59,8 +59,8 @@ export default function ContactSection() {
 
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/e3dd84b79_MehraResume2025.pdf';
-    link.download = 'Abhishek_Mehra_Resume.pdf';
+    link.href = '/assets/Mehra Resume 2025.pdf';
+    link.download = 'Mehra Resume 2025.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
