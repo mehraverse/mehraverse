@@ -66,10 +66,9 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Results-driven Software Engineer with a passion for automation and data,
-            building robust solutions in global finance.
+            Results-driven Software Engineer with a passion for automation and data.
             <br className="hidden sm:block" />
-            {' '}Focused on production engineering, tooling, and data-driven systems.
+            {' '}Building robust solutions in global finance, focused on production engineering and data-driven systems.
           </motion.p>
 
           <motion.div
