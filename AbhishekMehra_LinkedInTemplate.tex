@@ -1,0 +1,274 @@
+\documentclass[letterpaper, 10.5pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage{tfrupee}
+\usepackage{lastpage}
+\pdfgentounicode=1
+\usepackage{fontawesome5}
+
+%%% Colors used 
+\definecolor{purple}{RGB}{51,0,111}
+\definecolor{gold}{RGB}{232,211,162}
+\definecolor{metalGold}{RGB}{145,123,76}
+
+%%%% Header and foot change 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+% \fancyfoot{}
+% \cfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{0.9in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\footskip}{12.0pt}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{purple}\titlerule \vspace{5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\ItemWithoutBullet}[2]{
+  \item[]\small{
+    \textbf{#1}{: #2 \vspace{-1pt}}
+  }
+}
+\newcommand{\ItemWithBullet}[1]{
+  \item\small{
+    \text{} {#1 \vspace{-6pt}}
+  }
+}
+
+\newcommand{\resumeSubheadingTwoLines}[4]{
+  \vspace{-1pt} \item[]
+    \begin{tabular*}{0.99\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{{#1}} & {#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+    
+\newcommand{\resumeOnlyheadingNoBullet}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.99\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{{#1}} & {#2} 
+    \end{tabular*}
+    \vspace{3pt} % <-- Add this line to increase spacing after heading
+}
+    
+\newcommand{\TitleWithDate}[2]{
+  \vspace{-1pt} \item[]
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{\small #2} 
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{
+    \begin{itemize}[leftmargin=0pt,rightmargin = -5pt]
+    \vspace{-10pt}
+}
+    
+\newcommand{\resumeSubHeadingListEnd}{
+    \end{itemize}
+    \vspace{-10pt}
+}
+\newcommand{\resumeItemListStart}{
+    \begin{itemize}[leftmargin = 5pt, rightmargin = 5pt]}
+
+\newcommand{\resumeItemListAfterNoBullet}{
+    \begin{itemize}[leftmargin = 9pt]}
+
+\newcommand{\resumeItemListEnd}{
+    \end{itemize}\vspace{-5pt}}
+
+\newcommand{\roleStart}{
+    \vspace{-5pt} 
+    \begin{itemize}[leftmargin=*]
+}
+
+\newcommand{\roleEnd}{\end{itemize}}
+
+\newcommand{\projectStart}{
+    \vspace{-7pt} 
+    \begin{itemize}[leftmargin=*]
+}
+
+\newcommand{\projectEnd}{
+    \end{itemize}
+    \vspace{-5pt}
+    }
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{center}
+    {\huge \scshape\color{purple} Abhishek Mehra} \\
+    {\normalsize 
+    \href{tel:+818061174288}{+81 80-6117-4288} $\bullet$ 
+    \href{mailto:abhishekmehra1010@gmail.com}{abhishekmehra1010@gmail.com} $\bullet$
+    \href{https://github.com/mehraverse}{github.com/mehraverse} $\bullet$
+    \href{https://linkedin.com/in/abhishekmehra19}{linkedin.com/in/abhishekmehra19 } 
+    }
+\end{center}
+
+\section{\textcolor{purple}{Summary}}
+\vspace{-9pt}
+Results-driven software engineer with expertise in production engineering, automation, and data-driven tools. Skilled in Java, Python, and cloud services (AWS), with experience building scalable systems and semantic search pipelines that streamline global operations and reduce manual workloads.
+\vspace{3pt}
+
+{\small \textbf{Areas of Interest:} Software Engineering, Automation, Data Engineering, Cloud Services, Machine Learning}
+\vspace{-5pt}
+
+
+%%------------------ PROFESSIONAL EXPERIENCE -------------------
+\section{\textcolor{purple}{Professional Experience}}
+ \vspace{2pt}
+  \resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {Software Engineer (Associate), \href{https://www.nomuraholdings.com/}{Nomura Securities, Tokyo, Japan}}{Oct 2022--Present}
+\resumeSubHeadingListEnd
+ \vspace{2pt}
+\roleStart
+   \item {Production support for Java-based front-office equity systems, achieving a 90\% reduction in monitoring alerts.}
+   \vspace{-5pt}
+\item {Developed a Retrieval-Augmented Generation (RAG) tool for semantic search to suggest fixes from known issues and past incidents, significantly reducing manual lookup effort.}
+    \vspace{-5pt}
+    \item {Created runbook documentations (index refresh, disaster recovery) for smoother global team handovers.}
+\roleEnd
+ \vspace{3pt}
+\resumeSubHeadingListStart
+\resumeOnlyheadingNoBullet
+      {Software Engineer, \href{https://www.yokogawa.com/}{Yokogawa Electric, Tokyo, Japan}}{Oct 2020--Oct 2022}
+\resumeSubHeadingListEnd
+ \vspace{2pt}
+\roleStart
+    \item {Led CRM rollout for India and UAE, integrating Japan-based system with legacy regional systems }
+    \vspace{-5pt}
+    \item {Built REST APIs (Java 8, Spring Boot) to expose service ticket data as clean JSON for customer facing customer portal}
+    \vspace{-5pt}
+    \item {Wrote Python and SQL scripts to clean and migrate legacy text data and created integration/runbook documentation for global teams.}
+\roleEnd
+ \vspace{3pt}
+\resumeSubHeadingListStart
+\resumeOnlyheadingNoBullet
+      {Data Science Intern, \href{https://www.yokogawa.com/}{Yokogawa Electric, Tokyo, Japan}}{May--Jul 2019}
+\resumeSubHeadingListEnd
+ \vspace{2pt}
+\roleStart
+    \item {Prototyped a semantic search tool using backend service data; built pipelines in Elasticsearch to index documents with NLP-extracted metadata from AWS Comprehend and IBM Watson for key details.}
+    \vspace{-5pt}
+\roleEnd
+
+\vspace{-5pt}
+%%------------------ EDUCATION -------------------
+\section{\textcolor{purple}{Education}}
+\vspace{3pt}
+  \resumeSubHeadingListStart
+    \resumeSubheadingTwoLines
+      {\href{https://www.iitrpr.ac.in/}{Indian Institute of Technology (IIT), Ropar, India}} {Aug 2016--Jun 2020}
+      {Bachelor of Technology (B.Tech.)}{Department Rank: 4, CGPA: 8.25/10}
+    \ItemWithoutBullet{\textit{School}}{SGGS School, Chandigarh, India (Intermediate, 96\%)}
+    \ItemWithoutBullet{\textit{School}}{AKSIPS School, Chandigarh, India (Matriculation, CGPA: 10/10)}
+  \resumeSubHeadingListEnd
+
+%%------------------ PROJECTS & CERTIFICATIONS -------------------
+\section{\textcolor{purple}{Projects and Certifications}}
+\vspace{3pt}
+\resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {Mercari Shopping Agent (\href{https://github.com/mehraverse/mercari_agent_project}{Github})}{2025}
+\resumeSubHeadingListEnd
+\vspace{3pt}
+    {Built a Python shopping agent that uses OpenAI function calling to search Mercari Japan and surface top recommendations matching the user’s budget, shipping preferences, and quality constraints}
+\vspace{12pt}
+\resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {AI Agent System (\href{https://github.com/mehraverse/ai-agent-system}{Github} \textbar\ 
+      \href{https://github.com/mehraverse/ai-agent-system/blob/main/report/AI_Agent_System_Report.md}{Report})}{Oct 2025}
+\resumeSubHeadingListEnd
+\vspace{3pt}
+%\roleStart
+    {Developed a scalable FastAPI AI app for secure, isolated code execution supporting multiple concurrent users. Engineered auto-scaling infrastructure on AWS (ECS/Fargate, API Gateway, DynamoDB) to ensure 100\% uptime and reliable performance for production-level workloads.}
+%\roleEnd
+\vspace{12pt}
+\resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {Abstractive Text Summarizer (IIT Ropar) \href{https://drive.google.com/file/d/1zxVeL_D94YU4AZKfFQFJ-VG0H_axhtnm/view?usp=sharing}{(Project Report)}}{Apr 2020}
+\resumeSubHeadingListEnd
+\vspace{3pt}
+%\roleStart
+     {LSTM sequence-to-sequence model for text summarization. Evaluated using ROUGE metric.}
+%\roleEnd
+\vspace{12pt}
+\resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {Neural Networks and Deep Learning (Coursera, deeplearning.ai) \href{https://www.coursera.org/account/accomplishments/certificate/XRMVXTZ83LE3}{(Certificate)}}{Jul 2020}
+\resumeSubHeadingListEnd
+\vspace{3pt}
+%\roleStart
+     {Completed certification in deep learning fundamentals.}
+%\roleEnd
+\vspace{12pt}
+\resumeSubHeadingListStart
+    \resumeOnlyheadingNoBullet
+      {Data Structures and Algorithms (Coursera) \href{https://www.coursera.org/account/accomplishments/certificate/MBL26JJJRLYW}{(Algorithmic Toolbox)} \href{https://www.coursera.org/account/accomplishments/certificate/NWNFCD4NW3ZZ}{(Data Structures)}}{Jun 2018}
+\resumeSubHeadingListEnd
+\vspace{3pt}
+%\roleStart
+     {Completed certifications: Algorithmic Toolbox, Data Structures.}
+%\roleEnd
+
+\vspace{-5pt}
+%%------------------ SKILLS -------------------
+\section{\textcolor{purple}{Skills}}
+\resumeSubHeadingListStart
+    \item[]{\small \textbf{Programming:} Java, Spring Boot, Python, SQL, Bash, Git, Docker, Kubernetes}
+    \vspace{-5pt}
+    \item[]{\small \textbf{Tools/Frameworks:} AWS, Transformers, PyTorch, TensorFlow, Elasticsearch, Linux, CI/CD pipelines, Kafka, SDLC, Agile, Git}
+    \vspace{-5pt}
+    \item[]{
+      \small{\textbf{Coursework}{: Data Structures, Algorithms, Advanced Calculus, Probability Theory, Machine Learning, Applied AI}
+    }}
+\resumeSubHeadingListEnd
+
+%%------------------ RESPONSIBILITIES & MISC -------------------
+\section{\textcolor{purple}{Responsibilities and Miscellaneous}}
+\resumeSubHeadingListStart
+    \item[]{
+      {\small \textbf{Batch Representative}{: Liaison between students and professors to ensure effective training (2018-19)}
+    }}
+    \vspace{-5pt}
+    \item[]{
+      {\small \textbf{Sports}{: Central defender, football team at Inter IIT Sports Meet, IIT Madras (2017)}
+    }}
+    \vspace{-5pt}
+    \item[]{
+      {\small \textbf{Cultural}{: Editor in film making team at Inter IIT Cultural Meet, IIT Roorkee (2018)}
+    }}
+\resumeSubHeadingListEnd
+
+\end{document}

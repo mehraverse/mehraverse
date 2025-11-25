@@ -12,6 +12,21 @@ export default function ProjectsSection() {
 
   const projects = [
     {
+      title: "Mercari Shopping Agent",
+      description: "Built a Python shopping agent that uses OpenAI function calling to search Mercari Japan and surface top recommendations based on budget, shipping preferences, and quality constraints.",
+      tech: ["Python", "OpenAI", "APIs", "Automation"],
+      icon: "🛒",
+      githubLink: "https://github.com/mehraverse/mercari_agent_project"
+    },
+    {
+      title: "AI Agent System",
+      description: "Developed a scalable FastAPI-based AI app for secure, isolated code execution. Designed AWS infrastructure (ECS/Fargate, API Gateway, DynamoDB) for auto-scaling and reliable multi-user workloads.",
+      tech: ["FastAPI", "AWS ECS/Fargate", "API Gateway", "DynamoDB"],
+      icon: "⚙️",
+      githubLink: "https://github.com/mehraverse/ai-agent-system",
+      reportLink: "https://github.com/mehraverse/ai-agent-system/blob/main/report/AI_Agent_System_Report.md"
+    },
+    {
       title: "AI-Powered Article Summarizer",
       description: "Developed a Chrome extension using OpenAI GPT for instant article summarization, Q&A, and smart caching, demonstrating a practical application of LLMs to enhance content consumption.",
       tech: ["OpenAI GPT", "JavaScript", "Chrome APIs", "HTML/CSS"],
