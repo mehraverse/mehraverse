@@ -1,4 +1,14 @@
 import React from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import ChatInterface from './components/MercariAgent/ChatInterface';
+import { Play } from 'lucide-react';
+
 
 const experience = [
   {
@@ -33,7 +43,8 @@ const projects = [
     year: "2025",
     stack: "Python, OpenAI API",
     link: "https://github.com/mehraverse/mercari_agent_project",
-    desc: "Autonomous agent using OpenAI function calling to navigate Mercari Japan. Filters listings by budget and quality."
+    desc: "Autonomous agent using OpenAI function calling to navigate Mercari Japan. Filters listings by budget and quality.",
+    interactive: true // Flag for special rendering
   },
   {
     title: "AI Agent System",
@@ -129,10 +140,25 @@ const App = () => {
             {projects.map((p, i) => (
               <article key={i}>
                 <div className="flex justify-between items-baseline mb-2">
-                  <h3 className="font-medium text-lg">
+                  <h3 className="font-medium text-lg flex items-center gap-2">
                     <a href={p.link} target="_blank" rel="noreferrer" className="hover:underline decoration-1 underline-offset-2">
                       {p.title}
                     </a>
+                    {p.interactive && (
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <button className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-900 text-[10px] font-sans font-bold text-white hover:bg-gray-700 transition-colors tracking-wide ml-2 uppercase">
+                            <Play size={8} fill="currentColor" />
+                            Launch Demo
+                          </button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-2xl p-0 gap-0 bg-transparent border-none shadow-none text-left">
+                          <DialogTitle className="sr-only">Mercari Agent</DialogTitle>
+                          <DialogDescription className="sr-only">Interactive AI Agent for Shopping</DialogDescription>
+                          <ChatInterface />
+                        </DialogContent>
+                      </Dialog>
+                    )}
                   </h3>
                   <span className="font-mono text-xs text-gray-400">{p.year}</span>
                 </div>
