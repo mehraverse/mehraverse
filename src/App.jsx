@@ -49,6 +49,13 @@ const projects = [
     desc: "Scalable backend for secure code execution. Supports multi-user concurrent sessions with 100% uptime on AWS."
   },
   {
+    title: "Indus Express",
+    year: "2025",
+    stack: "Next.js, Tailwind CSS",
+    link: "https://indus.express",
+    desc: "Indian news, simple, no ads or paywalls."
+  },
+  {
     title: "Abstractive Summarizer",
     year: "2020",
     stack: "TensorFlow, NLP",
