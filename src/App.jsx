@@ -18,7 +18,7 @@ const experience = [
     company: "Nomura Securities, Tokyo",
     detail: (
       <>
-        Production support for Java-based front-office equity systems (<H>90% alert reduction</H>). Built RAG tool for semantic search of past incidents.
+        Production support for Java-based front-office equity systems (<H>90% alert reduction</H>). <H>Built RAG tool</H> for semantic search of past incidents.
       </>
     )
   },
@@ -26,13 +26,21 @@ const experience = [
     period: "2020–2022",
     role: "Software Engineer",
     company: "Yokogawa Electric, Tokyo",
-    detail: "Led CRM rollout for India/UAE. Built REST APIs (Spring Boot) and Python migration scripts for global data consolidation."
+    detail: (
+      <>
+        <H>Led CRM rollout</H> for India/UAE. Built REST APIs (Spring Boot) and Python migration scripts for global data consolidation.
+      </>
+    )
   },
   {
     period: "2019",
     role: "Data Science Intern",
     company: "Yokogawa Electric, Tokyo",
-    detail: "Prototyped semantic search using Elasticsearch and AWS Comprehend."
+    detail: (
+      <>
+        <H>Prototyped semantic search</H> using Elasticsearch and AWS Comprehend.
+      </>
+    )
   },
   {
     period: "2016–2020",
