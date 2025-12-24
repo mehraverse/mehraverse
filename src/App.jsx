@@ -4,53 +4,30 @@ import { Drawer } from './components/ui/Drawer';
 import { Play } from 'lucide-react';
 
 
-// Simple highlight component
-const H = ({ children }) => (
-  <span className="decoration-emerald-500/40 underline underline-offset-4 decoration-2 font-medium text-gray-800">
-    {children}
-  </span>
-);
-
 const experience = [
   {
     period: "2022–Present",
     role: "Software Engineer",
     company: "Nomura Securities, Tokyo",
-    detail: (
-      <>
-        Production support for Java-based front-office equity systems (<H>90% alert reduction</H>). <H>Built RAG tool</H> for semantic search of past incidents.
-      </>
-    )
+    detail: "Production support for Java-based front-office equity systems (90% alert reduction). Built RAG tool for semantic search of past incidents."
   },
   {
     period: "2020–2022",
     role: "Software Engineer",
     company: "Yokogawa Electric, Tokyo",
-    detail: (
-      <>
-        <H>Led CRM rollout</H> for India/UAE. Built REST APIs (Spring Boot) and Python migration scripts for global data consolidation.
-      </>
-    )
+    detail: "Led CRM rollout for India/UAE. Built REST APIs (Spring Boot) and Python migration scripts for global data consolidation."
   },
   {
     period: "2019",
     role: "Data Science Intern",
     company: "Yokogawa Electric, Tokyo",
-    detail: (
-      <>
-        <H>Prototyped semantic search</H> using Elasticsearch and AWS Comprehend.
-      </>
-    )
+    detail: "Prototyped semantic search using Elasticsearch and AWS Comprehend."
   },
   {
     period: "2016–2020",
     role: "B.Tech (Civil Engineering)",
     company: "IIT Ropar",
-    detail: (
-      <>
-        <H>Department Rank 4</H>. Focused on computational engineering and deep learning.
-      </>
-    )
+    detail: "Department Rank 4. Focused on computational engineering and deep learning."
   }
 ];
 
