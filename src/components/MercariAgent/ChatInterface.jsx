@@ -91,7 +91,7 @@ const ChatInterface = () => {
                                             .replace(/(Price:)/g, '\n\n**Price:**')
                                             .replace(/(URL:)/g, '\n\n**URL:**')
                                             .replace(/(Reason:)/g, '\n\n**Reason:** ')
-                                            .replace(/(\d+\.\s)/g, '\n\n$1')
+                                            .replace(/(\d+\.\s)/g, '\n\n---\n\n### $1')
                                         : msg.content
                                     }
                                 </ReactMarkdown>

@@ -147,18 +147,18 @@ const App = () => {
           <div className="space-y-10">
             {projects.map((p, i) => (
               <article key={i}>
-                <div className="flex justify-between items-baseline mb-2">
-                  <h3 className="font-medium text-lg flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                  <h3 className="font-medium text-lg flex flex-wrap items-center gap-2">
                     <a href={p.link} target="_blank" rel="noreferrer" className="hover:underline decoration-1 underline-offset-2">
                       {p.title}
                     </a>
                     {p.interactive && (
                       <button
                         onClick={() => setIsAgentOpen(true)}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-sans font-medium text-gray-500 hover:text-gray-900 border border-transparent hover:border-gray-200 rounded-full transition-all tracking-wide uppercase group ml-2"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-sans font-medium text-gray-500 hover:text-gray-900 border border-transparent hover:border-gray-200 rounded-full transition-all tracking-wide uppercase group shrink-0"
                       >
                         <Play size={8} fill="currentColor" className="text-gray-300 group-hover:text-gray-900 transition-colors" />
-                        Live Demo
+                        Demo
                       </button>
                     )}
                   </h3>
@@ -210,7 +210,7 @@ const App = () => {
 
         {/* VISUALS */}
         <Section title="Life in Pictures">
-          <div className="grid grid-cols-4 gap-2 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 grayscale hover:grayscale-0 transition-all duration-500">
             {photos.map((p, i) => (
               <div key={i} className="aspect-square bg-gray-100 overflow-hidden">
                 <img src={p.src} alt={p.caption} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
