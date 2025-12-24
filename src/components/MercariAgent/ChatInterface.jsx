@@ -87,7 +87,11 @@ const ChatInterface = () => {
                                     }}
                                 >
                                     {msg.role === 'assistant'
-                                        ? msg.content.replace(/(\d+\.\s)/g, '\n\n$1').replace(/(- Price:)/g, '\n- Price:').replace(/(- URL:)/g, '\n- URL:').replace(/(- Reason:)/g, '\n- Reason:')
+                                        ? msg.content
+                                            .replace(/(Price:)/g, '\n\n**Price:**')
+                                            .replace(/(URL:)/g, '\n\n**URL:**')
+                                            .replace(/(Reason:)/g, '\n\n**Reason:** ')
+                                            .replace(/(\d+\.\s)/g, '\n\n$1')
                                         : msg.content
                                     }
                                 </ReactMarkdown>
