@@ -82,6 +82,7 @@ const certifications = [
 ];
 
 const misc = [
+  "Founder, Indian Philosophy Collective (Tokyo): Building a community for cross-cultural dialogue.",
   "Batch Representative (2018-19): Liaison between students & professors.",
   "Sports (2017): Central Defender, IIT Madras Sports Meet.",
   "Cultural (2018): Editor, Filmmaking Team at IIT Roorkee."
@@ -199,13 +200,16 @@ const App = () => {
               ))}
             </ul>
 
-            <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Beyond the Code</h4>
-            <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1">
-              {misc.map((m, i) => (
-                <li key={`m - ${i} `}>{m}</li>
-              ))}
-            </ul>
           </div>
+        </Section>
+
+        {/* BEYOND THE CODE */}
+        <Section title="Leadership">
+          <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1">
+            {misc.map((m, i) => (
+              <li key={`m-${i}`}>{m}</li>
+            ))}
+          </ul>
         </Section>
 
         {/* VISUALS */}
