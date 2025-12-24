@@ -122,6 +122,7 @@ const App = () => {
           <h1 className="text-4xl font-normal mb-2 tracking-tight">Abhishek Mehra</h1>
           <p className="text-gray-600 mb-6 font-sans text-sm">Software Engineer based in Tokyo.</p>
           <div className="font-mono text-xs flex gap-6 text-gray-500 underline underline-offset-4 decoration-1 decoration-gray-300">
+            <a href="/assets/Resume.pdf" target="_blank" className="hover:text-black">Resume</a>
             <a href="mailto:abhishekmehra1010@gmail.com" className="hover:text-black">Email</a>
             <a href="https://github.com/mehraverse" className="hover:text-black">GitHub</a>
             <a href="https://linkedin.com/in/abhishekmehra19" className="hover:text-black">LinkedIn</a>
