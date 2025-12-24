@@ -1,11 +1,11 @@
-
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, ShoppingBag, X } from 'lucide-react';
+import { Send, Sparkles, ShoppingBag } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from "@/lib/utils";
 
 const ChatInterface = () => {
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: "Hello! I'm your Mercari Japan shopping assistant. I can help you find items, compare prices, and check shipping options. What are you looking for today?" }
+        { role: 'assistant', content: "I am ready to navigate the Japanese markets for you. What piece are you seeking?" }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -13,9 +13,9 @@ const ChatInterface = () => {
 
     useEffect(() => {
         if (scrollRef.current) {
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+            scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
         }
-    }, [messages]);
+    }, [messages, isLoading]);
 
     const sendMessage = async () => {
         if (!input.trim()) return;
@@ -40,56 +40,73 @@ const ChatInterface = () => {
             const data = await response.json();
             setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
         } catch (error) {
-            setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to the backend. Make sure the Python server is running." }]);
+            setMessages(prev => [...prev, { role: 'assistant', content: "Connection lost. Please ensure the neural link (server) is active." }]);
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div className="flex flex-col h-[600px] w-full max-w-2xl bg-white rounded-lg overflow-hidden font-sans border border-gray-100 shadow-sm">
-            {/* Header */}
-            <div className="bg-gray-50 border-b border-gray-100 p-4 flex items-center gap-3">
-                <div className="bg-red-500 rounded-full p-2 text-white">
-                    <ShoppingBag size={18} />
+        <div className="flex flex-col h-full font-serif text-gray-900">
+
+            {/* Header Area */}
+            <div className="pt-8 pb-4 px-8 border-b border-gray-100/50">
+                <div className="flex items-center gap-2 mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[10px] uppercase tracking-widest text-gray-400 font-sans">System Online</span>
                 </div>
-                <div>
-                    <h3 className="font-semibold text-gray-900 leading-tight">Mercari Assistant</h3>
-                    <p className="text-xs text-gray-500">Live Connection • Japan</p>
-                </div>
+                <h2 className="text-2xl font-light italic">Mercari Agent</h2>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white" ref={scrollRef}>
-                {messages.map((msg, i) => (
-                    <div key={i} className={cn("flex w-full", msg.role === 'user' ? "justify-end" : "justify-start")}>
-                        <div className={cn(
-                            "max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
-                            msg.role === 'user'
-                                ? "bg-gray-900 text-white rounded-tr-sm"
-                                : "bg-gray-100 text-gray-800 rounded-tl-sm"
-                        )}>
-                            {msg.content}
-                        </div>
-                    </div>
-                ))}
-                {isLoading && (
-                    <div className="flex justify-start w-full">
-                        <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1">
-                            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                        </div>
-                    </div>
-                )}
+            <div className="flex-1 overflow-y-auto px-8 py-6 space-y-8 scrollbar-hide" ref={scrollRef}>
+                <AnimatePresence initial={false}>
+                    {messages.map((msg, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            className={cn("flex flex-col", msg.role === 'user' ? "items-end" : "items-start")}
+                        >
+                            <span className="text-[9px] uppercase tracking-widest text-gray-300 mb-1.5 font-sans ml-1 mr-1">
+                                {msg.role === 'user' ? 'You' : 'Agent'}
+                            </span>
+                            <div className={cn(
+                                "max-w-[85%] text-sm leading-7 font-light tracking-wide",
+                                msg.role === 'user'
+                                    ? "bg-gray-50 text-gray-900 border border-gray-100 px-5 py-3 rounded-none"
+                                    : "text-gray-600 bg-transparent px-0 py-0"
+                            )}>
+                                {msg.content}
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    {/* Loading State - Minimalist Pulse */}
+                    {isLoading && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex flex-col items-start"
+                        >
+                            <span className="text-[9px] uppercase tracking-widest text-gray-300 mb-1.5 font-sans ml-1">Agent</span>
+                            <div className="flex items-center gap-1.5 h-7 px-1">
+                                <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 h-1 bg-gray-300 rounded-full" />
+                                <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }} className="w-1 h-1 bg-gray-300 rounded-full" />
+                                <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }} className="w-1 h-1 bg-gray-300 rounded-full" />
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
 
-            {/* Input */}
-            <div className="p-4 border-t border-gray-100 bg-white">
-                <div className="flex gap-2 items-center bg-gray-50 px-3 py-2 rounded-full border border-gray-200 focus-within:border-gray-400 focus-within:ring-1 focus-within:ring-gray-400 transition-all">
+            {/* Input Area */}
+            <div className="p-8 pb-10 bg-gradient-to-t from-white via-white to-transparent">
+                <div className="relative group">
                     <input
-                        className="flex-1 bg-transparent outline-none text-sm text-gray-800 placeholder:text-gray-400"
-                        placeholder="Type a message... (e.g., Find me a vintage camera)"
+                        className="w-full bg-transparent border-b border-gray-200 py-3 pr-12 text-base outline-none text-gray-900 placeholder:text-gray-300 font-light transition-colors focus:border-gray-800"
+                        placeholder="Ask me to find anything..."
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
@@ -98,14 +115,11 @@ const ChatInterface = () => {
                     <button
                         onClick={sendMessage}
                         disabled={isLoading || !input.trim()}
-                        className="p-2 bg-gray-900 text-white rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-900 transition-colors disabled:opacity-30"
                     >
-                        <Send size={14} />
+                        <Send size={16} strokeWidth={1} />
                     </button>
                 </div>
-                <p className="text-[10px] text-center text-gray-400 mt-2">
-                    Powered by Mercari Japan & OpenAI
-                </p>
             </div>
         </div>
     );

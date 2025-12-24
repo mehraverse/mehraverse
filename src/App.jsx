@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import ChatInterface from './components/MercariAgent/ChatInterface';
+import { Drawer } from './components/ui/Drawer';
 import { Play } from 'lucide-react';
 
 
@@ -44,7 +38,8 @@ const projects = [
     stack: "Python, OpenAI API",
     link: "https://github.com/mehraverse/mercari_agent_project",
     desc: "Autonomous agent using OpenAI function calling to navigate Mercari Japan. Filters listings by budget and quality.",
-    interactive: true // Flag for special rendering
+    interactive: true,
+    isOpen: false // state hook will handle this logic in component
   },
   {
     title: "AI Agent System",
@@ -104,8 +99,14 @@ const Section = ({ title, children }) => (
 );
 
 const App = () => {
+  const [isAgentOpen, setIsAgentOpen] = React.useState(false);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 font-serif selection:bg-gray-200">
+      <Drawer isOpen={isAgentOpen} onClose={() => setIsAgentOpen(false)}>
+        <ChatInterface />
+      </Drawer>
+
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         {/* HEADER */}
@@ -145,19 +146,13 @@ const App = () => {
                       {p.title}
                     </a>
                     {p.interactive && (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <button className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-900 text-[10px] font-sans font-bold text-white hover:bg-gray-700 transition-colors tracking-wide ml-2 uppercase">
-                            <Play size={8} fill="currentColor" />
-                            Launch Demo
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-2xl p-0 gap-0 bg-transparent border-none shadow-none text-left">
-                          <DialogTitle className="sr-only">Mercari Agent</DialogTitle>
-                          <DialogDescription className="sr-only">Interactive AI Agent for Shopping</DialogDescription>
-                          <ChatInterface />
-                        </DialogContent>
-                      </Dialog>
+                      <button
+                        onClick={() => setIsAgentOpen(true)}
+                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-900 text-[10px] font-sans font-bold text-white hover:bg-gray-700 transition-colors tracking-wide ml-2 uppercase"
+                      >
+                        <Play size={8} fill="currentColor" />
+                        Launch Demo
+                      </button>
                     )}
                   </h3>
                   <span className="font-mono text-xs text-gray-400">{p.year}</span>
@@ -200,7 +195,7 @@ const App = () => {
             <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Beyond the Code</h4>
             <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1">
               {misc.map((m, i) => (
-                <li key={`m-${i}`}>{m}</li>
+                <li key={`m - ${i} `}>{m}</li>
               ))}
             </ul>
           </div>
