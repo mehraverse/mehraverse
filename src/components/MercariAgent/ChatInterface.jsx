@@ -86,7 +86,10 @@ const ChatInterface = () => {
                                         a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
                                     }}
                                 >
-                                    {msg.content}
+                                    {msg.role === 'assistant'
+                                        ? msg.content.replace(/(\d+\.\s)/g, '\n\n$1').replace(/(- Price:)/g, '\n- Price:').replace(/(- URL:)/g, '\n- URL:').replace(/(- Reason:)/g, '\n- Reason:')
+                                        : msg.content
+                                    }
                                 </ReactMarkdown>
                             </div>
                         </motion.div>
