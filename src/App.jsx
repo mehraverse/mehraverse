@@ -148,10 +148,10 @@ const App = () => {
                     {p.interactive && (
                       <button
                         onClick={() => setIsAgentOpen(true)}
-                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-900 text-[10px] font-sans font-bold text-white hover:bg-gray-700 transition-colors tracking-wide ml-2 uppercase"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-sans font-medium text-gray-500 hover:text-gray-900 border border-transparent hover:border-gray-200 rounded-full transition-all tracking-wide uppercase group ml-2"
                       >
-                        <Play size={8} fill="currentColor" />
-                        Launch Demo
+                        <Play size={8} fill="currentColor" className="text-gray-300 group-hover:text-gray-900 transition-colors" />
+                        Live Demo
                       </button>
                     )}
                   </h3>

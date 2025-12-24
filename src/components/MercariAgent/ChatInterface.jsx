@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from "@/lib/utils";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const ChatInterface = () => {
     const [messages, setMessages] = useState([
@@ -73,12 +75,19 @@ const ChatInterface = () => {
                                 {msg.role === 'user' ? 'You' : 'Agent'}
                             </span>
                             <div className={cn(
-                                "max-w-[85%] text-sm leading-7 font-light tracking-wide",
+                                "max-w-[90%] text-sm font-light tracking-wide prose prose-sm prose-p:leading-relaxed prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800 prose-strong:font-medium",
                                 msg.role === 'user'
                                     ? "bg-gray-50 text-gray-900 border border-gray-100 px-5 py-3 rounded-none"
                                     : "text-gray-600 bg-transparent px-0 py-0"
                             )}>
-                                {msg.content}
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkGfm]}
+                                    components={{
+                                        a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
+                                    }}
+                                >
+                                    {msg.content}
+                                </ReactMarkdown>
                             </div>
                         </motion.div>
                     ))}

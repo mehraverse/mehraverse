@@ -25,7 +25,7 @@ export const Drawer = ({ isOpen, onClose, children, className }) => {
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
                         className={cn(
-                            "fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] bg-white/80 backdrop-blur-xl border-l border-white/20 shadow-2xl overflow-hidden",
+                            "fixed inset-y-0 right-0 z-50 w-full sm:w-[500px] md:w-[600px] bg-white/80 backdrop-blur-xl border-l border-white/20 shadow-2xl overflow-hidden",
                             className
                         )}
                     >
