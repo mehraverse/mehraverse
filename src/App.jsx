@@ -1,7 +1,10 @@
 import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import ChatInterface from './components/MercariAgent/ChatInterface';
 import { Drawer } from './components/ui/Drawer';
 import { Play } from 'lucide-react';
+import BlogPage from './pages/BlogPage';
+import BlogPost from './pages/BlogPost';
 
 
 const experience = [
@@ -106,129 +109,140 @@ const Section = ({ title, children }) => (
   </section>
 );
 
+const HomePage = ({ onOpenAgent }) => (
+  <div className="min-h-screen bg-white text-gray-900 font-serif selection:bg-gray-200">
+    <div className="max-w-3xl mx-auto px-6 py-24">
+
+      {/* HEADER */}
+      <header className="mb-20">
+        <h1 className="text-4xl font-normal mb-2 tracking-tight">Abhishek Mehra</h1>
+        <p className="text-gray-600 mb-6 font-sans text-sm">Software Engineer based in Tokyo.</p>
+        <div className="font-mono text-xs flex gap-6 text-gray-500 underline underline-offset-4 decoration-1 decoration-gray-300">
+          <a href="/assets/Resume.pdf" target="_blank" className="hover:text-black">Resume</a>
+          <a href="mailto:abhishekmehra1010@gmail.com" className="hover:text-black">Email</a>
+          <a href="https://github.com/mehraverse" className="hover:text-black">GitHub</a>
+          <a href="https://linkedin.com/in/abhishekmehra19" className="hover:text-black">LinkedIn</a>
+          <Link to="/blog" className="hover:text-black">Blog</Link>
+        </div>
+      </header>
+
+      {/* EXPERIENCE */}
+      <Section title="Timeline">
+        <div className="space-y-8">
+          {experience.map((e, i) => (
+            <div key={i} className="grid grid-cols-[120px_1fr] gap-4">
+              <span className="font-mono text-xs text-gray-400 pt-1">{e.period}</span>
+              <div>
+                <h3 className="font-medium text-lg text-gray-900">{e.role}, {e.company}</h3>
+                <p className="font-sans text-sm text-gray-600 mt-2 leading-relaxed">{e.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* PROJECTS */}
+      <Section title="Projects">
+        <div className="space-y-10">
+          {projects.map((p, i) => (
+            <article key={i}>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                <h3 className="font-medium text-lg flex flex-wrap items-center gap-2">
+                  <a href={p.link} target="_blank" rel="noreferrer" className="hover:underline decoration-1 underline-offset-2">
+                    {p.title}
+                  </a>
+                  {p.interactive && (
+                    <button
+                      onClick={() => onOpenAgent()}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-sans font-medium text-gray-500 hover:text-gray-900 border border-transparent hover:border-gray-200 rounded-full transition-all tracking-wide uppercase group shrink-0"
+                    >
+                      <Play size={8} fill="currentColor" className="text-gray-300 group-hover:text-gray-900 transition-colors" />
+                      Demo
+                    </button>
+                  )}
+                </h3>
+                <span className="font-mono text-xs text-gray-400">{p.year}</span>
+              </div>
+              <div className="font-mono text-xs text-gray-500 mb-2">{p.stack}</div>
+              <p className="font-sans text-sm text-gray-600 leading-relaxed max-w-prose">
+                {p.desc}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      {/* SKILLS & CERTS */}
+      <Section title="Technical Context">
+        <div className="mb-8">
+          <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Toolkit</h4>
+          <p className="font-mono text-xs text-gray-600 leading-relaxed max-w-lg">
+            {skills.join(" / ")}
+          </p>
+        </div>
+        <div>
+          <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Certifications</h4>
+          <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1 mb-8">
+            {certifications.map((c, i) => (
+              <li key={i}>
+                <a
+                  href={c.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline decoration-gray-300 underline-offset-2"
+                >
+                  {c.title}
+                </a>
+                <span className="text-gray-400 pl-2">— {c.issuer}</span>
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      </Section>
+
+      {/* BEYOND THE CODE */}
+      <Section title="Leadership">
+        <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1">
+          {misc.map((m, i) => (
+            <li key={`m-${i}`}>{m}</li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* VISUALS */}
+      <Section title="Life in Pictures">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 grayscale hover:grayscale-0 transition-all duration-500">
+          {photos.map((p, i) => (
+            <div key={i} className="aspect-square bg-gray-100 overflow-hidden">
+              <img src={p.src} alt={p.caption} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
+            </div>
+          ))}
+        </div>
+        <p className="font-mono text-[10px] text-gray-400 mt-4 text-right">
+          Selected frames: Nubra, Zao, Genoa, Interlaken
+        </p>
+      </Section>
+
+    </div>
+  </div>
+);
+
 const App = () => {
   const [isAgentOpen, setIsAgentOpen] = React.useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-serif selection:bg-gray-200">
+    <>
       <Drawer isOpen={isAgentOpen} onClose={() => setIsAgentOpen(false)}>
         <ChatInterface />
       </Drawer>
 
-      <div className="max-w-3xl mx-auto px-6 py-24">
-
-        {/* HEADER */}
-        <header className="mb-20">
-          <h1 className="text-4xl font-normal mb-2 tracking-tight">Abhishek Mehra</h1>
-          <p className="text-gray-600 mb-6 font-sans text-sm">Software Engineer based in Tokyo.</p>
-          <div className="font-mono text-xs flex gap-6 text-gray-500 underline underline-offset-4 decoration-1 decoration-gray-300">
-            <a href="/assets/Resume.pdf" target="_blank" className="hover:text-black">Resume</a>
-            <a href="mailto:abhishekmehra1010@gmail.com" className="hover:text-black">Email</a>
-            <a href="https://github.com/mehraverse" className="hover:text-black">GitHub</a>
-            <a href="https://linkedin.com/in/abhishekmehra19" className="hover:text-black">LinkedIn</a>
-          </div>
-        </header>
-
-        {/* EXPERIENCE */}
-        <Section title="Timeline">
-          <div className="space-y-8">
-            {experience.map((e, i) => (
-              <div key={i} className="grid grid-cols-[120px_1fr] gap-4">
-                <span className="font-mono text-xs text-gray-400 pt-1">{e.period}</span>
-                <div>
-                  <h3 className="font-medium text-lg text-gray-900">{e.role}, {e.company}</h3>
-                  <p className="font-sans text-sm text-gray-600 mt-2 leading-relaxed">{e.detail}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* PROJECTS */}
-        <Section title="Projects">
-          <div className="space-y-10">
-            {projects.map((p, i) => (
-              <article key={i}>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
-                  <h3 className="font-medium text-lg flex flex-wrap items-center gap-2">
-                    <a href={p.link} target="_blank" rel="noreferrer" className="hover:underline decoration-1 underline-offset-2">
-                      {p.title}
-                    </a>
-                    {p.interactive && (
-                      <button
-                        onClick={() => setIsAgentOpen(true)}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-sans font-medium text-gray-500 hover:text-gray-900 border border-transparent hover:border-gray-200 rounded-full transition-all tracking-wide uppercase group shrink-0"
-                      >
-                        <Play size={8} fill="currentColor" className="text-gray-300 group-hover:text-gray-900 transition-colors" />
-                        Demo
-                      </button>
-                    )}
-                  </h3>
-                  <span className="font-mono text-xs text-gray-400">{p.year}</span>
-                </div>
-                <div className="font-mono text-xs text-gray-500 mb-2">{p.stack}</div>
-                <p className="font-sans text-sm text-gray-600 leading-relaxed max-w-prose">
-                  {p.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-        </Section>
-
-        {/* SKILLS & CERTS */}
-        <Section title="Technical Context">
-          <div className="mb-8">
-            <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Toolkit</h4>
-            <p className="font-mono text-xs text-gray-600 leading-relaxed max-w-lg">
-              {skills.join(" / ")}
-            </p>
-          </div>
-          <div>
-            <h4 className="font-sans text-sm font-bold text-gray-900 mb-2">Certifications</h4>
-            <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1 mb-8">
-              {certifications.map((c, i) => (
-                <li key={i}>
-                  <a
-                    href={c.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:underline decoration-gray-300 underline-offset-2"
-                  >
-                    {c.title}
-                  </a>
-                  <span className="text-gray-400 pl-2">— {c.issuer}</span>
-                </li>
-              ))}
-            </ul>
-
-          </div>
-        </Section>
-
-        {/* BEYOND THE CODE */}
-        <Section title="Leadership">
-          <ul className="list-disc pl-4 font-sans text-sm text-gray-600 space-y-1">
-            {misc.map((m, i) => (
-              <li key={`m-${i}`}>{m}</li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* VISUALS */}
-        <Section title="Life in Pictures">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 grayscale hover:grayscale-0 transition-all duration-500">
-            {photos.map((p, i) => (
-              <div key={i} className="aspect-square bg-gray-100 overflow-hidden">
-                <img src={p.src} alt={p.caption} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
-              </div>
-            ))}
-          </div>
-          <p className="font-mono text-[10px] text-gray-400 mt-4 text-right">
-            Selected frames: Nubra, Zao, Genoa, Interlaken
-          </p>
-        </Section>
-
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<HomePage onOpenAgent={() => setIsAgentOpen(true)} />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+      </Routes>
+    </>
   );
 };
 
